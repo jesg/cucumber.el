@@ -59,6 +59,8 @@ class Step
         Regexp.new("^#{regexp}$")
       when Regexp
         value
+      when Sexp
+        regexp = value[1]
       else
         STDERR.puts "Warning: invalid parameter to Given/When/Then on #{file}:#{line}.  Expected Regexp or String, got #{value.class} #{value.inspect}"
         Regexp.new(/^INVALID PARAM$/)
